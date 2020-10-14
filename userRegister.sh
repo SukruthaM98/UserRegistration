@@ -1,4 +1,4 @@
-__#!/bin/bash 
+#!/bin/bash 
 echo "welcome to user registration program"
 read -p "enter valid first name containing first letter as capital and length of minimum 3 letters:" firstname
 #verifying valid username
@@ -31,7 +31,7 @@ else
         echo "invalid email, please enter valid emailId"
 fi
 
-read -p "enter valid phone number, country code space and 10 digit number" phonenumber
+read -p "enter valid phone number, country code space and 10 digit number:" phonenumber
 #verifying valid phone number
 phonepattern="^[0-9]{2}[[:space:]][0-9]{10}$"
 
@@ -40,4 +40,15 @@ then
 	echo " valid phone number"
 else
 	echo " invalid phone number, please enter valid phonenumber"
+fi
+
+read -p " enter password:" password
+#validating password
+passwordpattern="[a-zA-Z0-9]{8}"
+
+if [[ $password =~ $passwordpattern ]]
+then
+	echo " valid password"
+else
+	echo "invalid password"
 fi
