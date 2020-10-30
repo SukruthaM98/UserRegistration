@@ -50,11 +50,27 @@ passwordpattern="[[:upper:]]"
 passwordpattern1="[0-9]+"
 #validating password, should contain exactly 1 special character
 passwordpattern2="^[a-z0-9A-Z]*[!@#$%^&*][a-z0-9A-Z]*$"
-
-
-if [[ ${#password} -ge 8 && $password =~ $passwordpattern2 ]]
+#validating password,should contain minimum 8 characters
+if [[ ${#password} -ge 8 ]]
 then
-	echo " valid password"
+	if [[ $password =~ $passwordpattern ]]
+	then
+
+		if [[ $password =~ $passwordpattern1 ]]
+        	then
+			if [[ $password =~ $passwordpattern2 ]]
+        		then
+				echo " valid password"
+			else
+				echo " password must contain exactly 1 special character"
+			fi
+		else
+			echo " password must contain atleast 1 numeric"
+		fi
+	else
+		echo " password must contain atleast 1 upper case letter"
+	fi
 else
-	echo "invalid password"
+	echo " password must be minimum of 8 character"
 fi
+
