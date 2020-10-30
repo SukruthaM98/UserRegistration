@@ -1,4 +1,5 @@
-#!/bin/bash 
+#!/bin/bash
+shopt -s extglob
 echo "welcome to user registration program"
 read -p "enter valid first name containing first letter as capital and length of minimum 3 letters:" firstname
 #verifying valid username
@@ -43,10 +44,10 @@ else
 fi
 
 read -p " enter password:" password
-#validating password
-passwordpattern="[a-zA-Z0-9]{8}"
+#validating password, should contain atleast 1 uppercase
+passwordpattern="[[:upper:]]"
 
-if [[ $password =~ $passwordpattern ]]
+if [[ ${#password} -ge 8 && $password =~ $passwordpattern ]]
 then
 	echo " valid password"
 else
