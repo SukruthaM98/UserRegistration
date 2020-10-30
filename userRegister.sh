@@ -46,8 +46,10 @@ fi
 read -p " enter password:" password
 #validating password, should contain atleast 1 uppercase
 passwordpattern="[[:upper:]]"
+#validating password, should contain atleast 1 uppercase
+passwordpattern1="[0-9]+"
 
-if [[ ${#password} -ge 8 && $password =~ $passwordpattern ]]
+if [[ ${#password} -ge 8 && $password =~ $passwordpattern1 ]]
 then
 	echo " valid password"
 else
