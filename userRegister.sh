@@ -46,10 +46,13 @@ fi
 read -p " enter password:" password
 #validating password, should contain atleast 1 uppercase
 passwordpattern="[[:upper:]]"
-#validating password, should contain atleast 1 uppercase
+#validating password, should contain atleast 1 numeric
 passwordpattern1="[0-9]+"
+#validating password, should contain exactly 1 special character
+passwordpattern2="^[a-z0-9A-Z]*[!@#$%^&*][a-z0-9A-Z]*$"
 
-if [[ ${#password} -ge 8 && $password =~ $passwordpattern1 ]]
+
+if [[ ${#password} -ge 8 && $password =~ $passwordpattern2 ]]
 then
 	echo " valid password"
 else
